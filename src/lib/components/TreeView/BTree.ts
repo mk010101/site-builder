@@ -60,18 +60,32 @@ export class BTree extends HTMLElement {
 	.radio:checked ~ span {
 		color: red;
 	}
-	
-
 	summary::marker,
 	summary::-webkit-details-marker {
 		display: none;
 		content: '';
 	}
+
+	nav {
+		display: flex;
+		gap: 1rem;
+	}
+
+	select {
+		max-width: 8rem;
+	}
+
     </style>
 
 	<nav>
-		<button variant="simple" data-id="move-up">Up</button>
-		<button variant="simple" data-id="move-down">Down</button>
+		<div>
+			<button variant="simple" data-id="move-up">Up</button>
+			<button variant="simple" data-id="move-down">Down</button>
+		</div>
+		<div>
+			<button variant="simple" data-id="move-to">Move to:</button> 
+			<select></select>
+		</div>
 	</nav>
     <aside></aside>
     `;
@@ -79,6 +93,7 @@ export class BTree extends HTMLElement {
 	_treeHolder: HTMLElement;
 	_selectedEl: HTMLElement | null = null;
 	_nav: HTMLElement;
+	_elSelect: HTMLSelectElement;
 
 	constructor() {
 		super();
@@ -87,6 +102,7 @@ export class BTree extends HTMLElement {
 
 		this._treeHolder = shadow.querySelector('aside') as HTMLElement;
 		this._nav = shadow.querySelector('nav') as HTMLElement;
+		this._elSelect = this._nav.querySelector('select') as HTMLSelectElement;
 
 		this._drop = this._drop.bind(this);
 		this._itemSelect = this._itemSelect.bind(this);
@@ -115,6 +131,8 @@ export class BTree extends HTMLElement {
 		dropTargets.forEach((el) => {
 			el.addEventListener('dragover', this._dOver);
 		});
+
+		this._buildSelect();
 	}
 
 	_itemSelect(e: Event) {
@@ -138,6 +156,10 @@ export class BTree extends HTMLElement {
 			case 'move-up':
 				this._moveUp();
 				break;
+
+			case 'move-to':
+				this._moveTo();
+				break;
 		}
 	}
 
@@ -159,6 +181,25 @@ export class BTree extends HTMLElement {
 		parent.appendChild(this._selectedEl);
 		if (next?.nodeName !== 'LABEL' && next?.nodeName !== 'DETAILS') return;
 		parent.insertBefore(this._selectedEl, next);
+	}
+
+	_moveTo() {
+		if (this._selectedEl?.hasAttribute('index')) return;
+
+		const arr = this._elSelect.value.split('/');
+		const id = arr[arr.length - 1];
+		const parent = this._treeHolder.querySelector(`#${id}`);
+
+		if (
+			this._selectedEl &&
+			parent !== this._selectedEl &&
+			parent !== this._selectedEl.parentElement
+		) {
+			try {
+				parent?.appendChild(this._selectedEl);
+				this._buildSelect();
+			} catch (err) {}
+		}
 	}
 
 	_dStart(e: DragEvent) {
@@ -190,20 +231,44 @@ export class BTree extends HTMLElement {
 		try {
 			if (parent.classList.contains('drop-target')) {
 				parent.appendChild(dragged);
+				this._buildSelect();
 			}
 		} catch (err) {}
 	}
 
-	_id = 0;
+	_buildSelect() {
+		const containers: HTMLElement[] = Array.from(this.shadowRoot!.querySelectorAll('details'));
+
+		function getPath(el: HTMLElement) {
+			let prev: any = el;
+			const arr: any[] = [];
+			while (prev) {
+				if (prev.id) arr.push(prev.id);
+				prev = prev.parentNode;
+			}
+			return arr.reverse().join('/');
+		}
+
+		let str = '';
+
+		containers.forEach((el) => {
+			const path = getPath(el);
+			el.setAttribute('path', path);
+			str += `<option>${path}</option>`;
+		});
+
+		this._elSelect.innerHTML = str;
+	}
 
 	_parse(data: TreeData, str = '') {
 		data.forEach((p) => {
 			if (p.type === 'dir') {
-				str += `<details open draggable="true" class="drop-target draggable">
+				const disabled = p.label === 'root' ? 'disabled' : '';
+				str += `<details id="${p.id}" open draggable="true" class="drop-target draggable">
 					<summary>
 						<span class="closed">+</span>
 						<span class="open">-</span>
-						<label class="dir"><input class="radio" type='radio' name='tree'><span>${p.label}</span></label>
+						<label class="dir"><input ${disabled} class="radio" type='radio' name='tree'><span>${p.label}</span></label>
 				</summary>`;
 				str += `${this._parse(p.children, '')}`;
 				str += '</details>';
@@ -211,7 +276,7 @@ export class BTree extends HTMLElement {
 				const isIndex = p.isIndex ? "index='true'" : '';
 				const draggable = !isIndex ? 'draggable="true"' : '';
 				const index = isIndex ? ' (INDEX)' : '';
-				str += `<label ${isIndex} ${draggable} class="leaf draggable">
+				str += `<label id="${p.id}" ${isIndex} ${draggable} class="leaf draggable">
 						<input type='radio' class="radio page" name='tree'>
 						<span>${p.label}${index}</span>
 					</label>`;

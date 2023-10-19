@@ -12,37 +12,45 @@
 		{
 			type: 'dir',
 			label: 'root',
+			id: 'root',
 			children: [
 				{
 					type: 'page',
 					isIndex: true,
-					label: '1 Earth'
+					label: '1 Earth',
+					id: 'p-0'
 				},
 				{
 					type: 'dir',
 					label: 'Gas giants',
+					id: 'gas-giants',
 					children: [
 						{
 							type: 'page',
-							label: '2 Jupiter'
+							label: '2 Jupiter',
+							id: 'jup'
 						},
 						{
 							type: 'page',
-							label: '3 Neptune'
+							label: '3 Neptune',
+							id: 'nept'
 						},
 						{
 							type: 'page',
-							label: '4 Saturn'
+							label: '4 Saturn',
+							id: 'sat'
 						},
 						{
 							type: 'page',
-							label: '5 Uranus'
+							label: '5 Uranus',
+							id: 'ura'
 						}
 					]
 				},
 				{
 					type: 'dir',
 					label: 'Empty',
+					id: 'empty',
 					children: []
 				}
 			]
