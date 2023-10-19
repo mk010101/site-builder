@@ -1,0 +1,49 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+html,
+/*
+body {
+  height: 100%;
+  block-size: 100%;
+}
+*/
+body,
+:host,
+:root {
+	line-height: calc(0.75em + 1rem);
+	-webkit-font-smoothing: antialiased;
+	font-family: Arial, Tahoma, sans-serif;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+	display: inline-block;
+	max-width: 100%;
+}
+input,
+button,
+textarea,
+optgroup,
+select {
+	font: inherit;
+	color: inherit;
+	line-height: calc(0.25em + 1rem);
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
