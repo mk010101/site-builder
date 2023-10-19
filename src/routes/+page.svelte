@@ -10,35 +10,41 @@
 
 	const data = [
 		{
-			type: 'page',
-			label: '1 Earth'
-		},
-		{
 			type: 'dir',
-			label: 'Gas giants',
+			label: 'root',
 			children: [
 				{
 					type: 'page',
-					label: '2 Jupiter'
+					label: '1 Earth'
 				},
 				{
-					type: 'page',
-					label: '3 Neptune'
+					type: 'dir',
+					label: 'Gas giants',
+					children: [
+						{
+							type: 'page',
+							label: '2 Jupiter'
+						},
+						{
+							type: 'page',
+							label: '3 Neptune'
+						},
+						{
+							type: 'page',
+							label: '4 Saturn'
+						},
+						{
+							type: 'page',
+							label: '5 Uranus'
+						}
+					]
 				},
 				{
-					type: 'page',
-					label: '4 Saturn'
-				},
-				{
-					type: 'page',
-					label: '5 Uranus'
+					type: 'dir',
+					label: 'Empty',
+					children: []
 				}
 			]
-		},
-		{
-			type: 'dir',
-			label: 'Empty',
-			children: []
 		}
 	];
 

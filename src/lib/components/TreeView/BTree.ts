@@ -6,35 +6,60 @@ export class BTree extends HTMLElement {
 	template = /*html*/ `
         <style>
 	@import "/styles/reset.css";
-    .drop-target {
-		zbackground: #e6d9a6;
+
+	:host {
+		--margin-left: .5rem;
 	}
 
-	.dragging {
+	.root {
+		padding-top: 1rem !important;
+	}
+
+	.draggable {
+		display: block;
+	}
+
+    .drop-target {
+		padding: .25rem 0;
+		background: #e6d9a6;
+	}
+
+	.dragged {
 		opacity: .2;
 	}
 
-	details,
-	.content {
-		padding-left: 0.75rem;
+	details {
 		position: relative;
 		line-height: 1.2;
 		user-select: none;
 	}
 
-	.content > div {
+	details > .leaf, details > details {
+		margin-left: var(--margin-left);
+	}
+
+	.leaf {
 		padding: .25rem 0;
 		background: #c1c1ea;
 		margin-bottom: 1px;
 	}
 
-	details::before {
+	.dragged-over {
+		color: red;
+	}
+
+	summary {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	zdetails::before {
 		content: '▸';
 		position: absolute;
 		margin-left: -0.75rem;
 	}
 
-	details[open]::before {
+	zdetails[open]::before {
 		content: '▾';
 	}
 
@@ -45,7 +70,7 @@ export class BTree extends HTMLElement {
 	}
         </style>
 
-        <aside class="drop-target">TEST</aside>
+        <aside></aside>
     `;
 
 	_el: HTMLElement;
@@ -62,9 +87,10 @@ export class BTree extends HTMLElement {
 		const str = this._parse(data);
 		this._el.innerHTML = str;
 
-		this._el.classList.add('drop-target');
+		//this._el.classList.add('drop-target');
+		this._el.classList.add('root');
 
-		const draggables: HTMLElement[] = Array.from(this._el.querySelectorAll('*[draggable="true"]'));
+		const draggables: HTMLElement[] = Array.from(this._el.querySelectorAll('.draggable'));
 		draggables.forEach((el) => {
 			el.addEventListener('dragstart', this._dStart);
 			el.addEventListener('dragend', this._dEnd);
@@ -87,6 +113,7 @@ export class BTree extends HTMLElement {
 	_dOver(e: DragEvent) {
 		e.preventDefault();
 		const el: HTMLDivElement = e.target as HTMLDivElement;
+		//el.classList.add('dragged-over');
 	}
 
 	_dEnd(e: DragEvent) {
@@ -99,7 +126,16 @@ export class BTree extends HTMLElement {
 		e.preventDefault();
 		const el: HTMLElement = e.target as HTMLElement;
 		const dragged: HTMLElement = <HTMLElement>this._el.querySelector('.dragged');
-		console.log(el, dragged);
+		let parent: HTMLElement = <HTMLElement>el.parentElement;
+
+		if (parent.nodeName === 'SUMMARY') parent = <HTMLElement>parent.parentElement;
+
+		if (el === dragged) return;
+		//console.log(parent.nodeName);
+
+		if (parent.classList.contains('drop-target')) {
+			parent.appendChild(dragged);
+		}
 	}
 
 	_id = 0;
@@ -107,13 +143,19 @@ export class BTree extends HTMLElement {
 	_parse(data: TreeData, str = '') {
 		data.forEach((p) => {
 			if (p.type === 'dir') {
-				str += `<details open draggable="true" class="drop-target"><summary>${p.label}</summary>`;
-				str += `<div class="content">${this._parse(p.children, '')}</div>`;
+				str += `<details open draggable="true" class="drop-target draggable">
+					<summary>
+						<span>${p.label}</span>
+						<label><input type='radio' name='tree-dir'>Select</label>
+				</summary>`;
+				str += `${this._parse(p.children, '')}`;
 				str += '</details>';
 			} else {
-				str += `<div draggable="true">
-				${p.label}</div>
-				`;
+				//str += `<div draggable="true" class="leaf">${p.label}</div>`;
+				str += `<label draggable="true" class="leaf draggable">
+						<input type='radio' name='tree-page'>
+						${p.label}
+					</label>`;
 			}
 		});
 		return str;
