@@ -15,6 +15,7 @@
 			children: [
 				{
 					type: 'page',
+					isIndex: true,
 					label: '1 Earth'
 				},
 				{

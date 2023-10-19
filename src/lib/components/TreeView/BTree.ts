@@ -142,16 +142,17 @@ export class BTree extends HTMLElement {
 	}
 
 	_moveUp() {
-		if (!this._selectedEl) return;
+		if (!this._selectedEl || this._selectedEl.hasAttribute('index')) return;
 
 		const parent: HTMLElement = <HTMLElement>this._selectedEl.parentNode;
-		const prev = this._selectedEl.previousSibling;
+		const prev = <HTMLElement>this._selectedEl.previousSibling;
+		if (prev.hasAttribute('index')) return;
 		if (prev?.nodeName !== 'LABEL' && prev?.nodeName !== 'DETAILS') return;
 		parent.insertBefore(this._selectedEl, prev);
 	}
 
 	_moveDwon() {
-		if (!this._selectedEl) return;
+		if (!this._selectedEl || this._selectedEl.hasAttribute('index')) return;
 
 		const parent: HTMLElement = <HTMLElement>this._selectedEl.parentNode;
 		const next = this._selectedEl.nextSibling?.nextSibling;
@@ -186,9 +187,11 @@ export class BTree extends HTMLElement {
 
 		if (el === dragged) return;
 
-		if (parent.classList.contains('drop-target')) {
-			parent.appendChild(dragged);
-		}
+		try {
+			if (parent.classList.contains('drop-target')) {
+				parent.appendChild(dragged);
+			}
+		} catch (err) {}
 	}
 
 	_id = 0;
@@ -205,9 +208,12 @@ export class BTree extends HTMLElement {
 				str += `${this._parse(p.children, '')}`;
 				str += '</details>';
 			} else {
-				str += `<label draggable="true" class="leaf draggable">
+				const isIndex = p.isIndex ? "index='true'" : '';
+				const draggable = !isIndex ? 'draggable="true"' : '';
+				const index = isIndex ? ' (INDEX)' : '';
+				str += `<label ${isIndex} ${draggable} class="leaf draggable">
 						<input type='radio' class="radio page" name='tree'>
-						<span>${p.label}</span>
+						<span>${p.label}${index}</span>
 					</label>`;
 			}
 		});
