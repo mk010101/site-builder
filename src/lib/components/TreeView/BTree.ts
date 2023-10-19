@@ -113,6 +113,8 @@ export class BTree extends HTMLElement {
 	}
 
 	setData(data: TreeData) {
+		this._clear();
+
 		const str = this._parse(data);
 		this._treeHolder.innerHTML = str;
 
@@ -133,6 +135,22 @@ export class BTree extends HTMLElement {
 		});
 
 		this._buildSelect();
+	}
+
+	_clear() {
+		const draggables: HTMLElement[] = Array.from(this._treeHolder.querySelectorAll('.draggable'));
+		draggables.forEach((el) => {
+			el.removeEventListener('dragstart', this._dStart);
+			el.removeEventListener('dragend', this._dEnd);
+			el.removeEventListener('drop', this._drop);
+		});
+
+		const dropTargets: HTMLElement[] = Array.from(
+			this.shadowRoot!.querySelectorAll('.drop-target')
+		);
+		dropTargets.forEach((el) => {
+			el.removeEventListener('dragover', this._dOver);
+		});
 	}
 
 	_itemSelect(e: Event) {
