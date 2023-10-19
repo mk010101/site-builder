@@ -8,11 +8,7 @@ export class BTree extends HTMLElement {
 	@import "/styles/reset.css";
 
 	:host {
-		--margin-left: .5rem;
-	}
-
-	.root {
-		padding-top: 1rem !important;
+		--margin-left: 1.5rem;
 	}
 
 	.draggable {
@@ -21,7 +17,6 @@ export class BTree extends HTMLElement {
 
     .drop-target {
 		padding: .25rem 0;
-		background: #e6d9a6;
 	}
 
 	.dragged {
@@ -32,6 +27,7 @@ export class BTree extends HTMLElement {
 		position: relative;
 		line-height: 1.2;
 		user-select: none;
+		border-left: 1px solid #ccc;
 	}
 
 	details > .leaf, details > details {
@@ -40,8 +36,6 @@ export class BTree extends HTMLElement {
 
 	.leaf {
 		padding: .25rem 0;
-		background: #c1c1ea;
-		margin-bottom: 1px;
 	}
 
 	.dragged-over {
@@ -50,27 +44,36 @@ export class BTree extends HTMLElement {
 
 	summary {
 		display: flex;
-		justify-content: space-between;
+		gap: 4px;
+		margin-bottom: .25rem;
 	}
 
-	zdetails::before {
-		content: '▸';
-		position: absolute;
-		margin-left: -0.75rem;
+	.open {display: none}
+
+	details[open] > summary .closed {
+		display: none;
+	}
+	details[open] > summary .open {
+		display: block;
 	}
 
-	zdetails[open]::before {
-		content: '▾';
+	.radio {
+		display: none;
 	}
+
+	.radio:checked ~ span {
+		color: red;
+	}
+	
 
 	summary::marker,
 	summary::-webkit-details-marker {
 		display: none;
 		content: '';
 	}
-        </style>
+    </style>
 
-        <aside></aside>
+    <aside></aside>
     `;
 
 	_el: HTMLElement;
@@ -145,16 +148,18 @@ export class BTree extends HTMLElement {
 			if (p.type === 'dir') {
 				str += `<details open draggable="true" class="drop-target draggable">
 					<summary>
+						<span class="closed">+</span>
+						<span class="open">-</span>
 						<span>${p.label}</span>
-						<label><input type='radio' name='tree-dir'>Select</label>
+						<label><input class="radio" type='radio dir' name='tree-dir'>Select</label>
 				</summary>`;
 				str += `${this._parse(p.children, '')}`;
 				str += '</details>';
 			} else {
 				//str += `<div draggable="true" class="leaf">${p.label}</div>`;
 				str += `<label draggable="true" class="leaf draggable">
-						<input type='radio' name='tree-page'>
-						${p.label}
+						<input type='radio' class="radio page" name='tree-page'>
+						<span>${p.label}</span>
 					</label>`;
 			}
 		});
