@@ -1,0 +1,244 @@
+@font-face {
+    font-family: "a-icons";
+    src: url("./a-icons.woff?941c994ba3b58c94ead6978d7a7704de") format("woff"),
+url("./a-icons.ttf?941c994ba3b58c94ead6978d7a7704de") format("truetype");
+}
+
+[class^="i-"]:before, [class*=" i-"]:before {
+    font-family: a-icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.i-a_back:before {
+    content: "\f101";
+}
+.i-a_down:before {
+    content: "\f102";
+}
+.i-a_forward:before {
+    content: "\f103";
+}
+.i-a_up:before {
+    content: "\f104";
+}
+.i-anchor:before {
+    content: "\f105";
+}
+.i-arrow_back:before {
+    content: "\f106";
+}
+.i-arrow_down:before {
+    content: "\f107";
+}
+.i-arrow_ff:before {
+    content: "\f108";
+}
+.i-arrow_up:before {
+    content: "\f109";
+}
+.i-calendar:before {
+    content: "\f10a";
+}
+.i-call:before {
+    content: "\f10b";
+}
+.i-cart:before {
+    content: "\f10c";
+}
+.i-chat:before {
+    content: "\f10d";
+}
+.i-check_box_blank:before {
+    content: "\f10e";
+}
+.i-check_box:before {
+    content: "\f10f";
+}
+.i-chevron_down:before {
+    content: "\f110";
+}
+.i-chevron_left:before {
+    content: "\f111";
+}
+.i-chevron_right:before {
+    content: "\f112";
+}
+.i-chevron_up:before {
+    content: "\f113";
+}
+.i-close:before {
+    content: "\f114";
+}
+.i-code:before {
+    content: "\f115";
+}
+.i-component1:before {
+    content: "\f116";
+}
+.i-copy:before {
+    content: "\f117";
+}
+.i-create_new_folder:before {
+    content: "\f118";
+}
+.i-credit_card:before {
+    content: "\f119";
+}
+.i-delete:before {
+    content: "\f11a";
+}
+.i-device_desktop:before {
+    content: "\f11b";
+}
+.i-device_phone:before {
+    content: "\f11c";
+}
+.i-done:before {
+    content: "\f11d";
+}
+.i-download:before {
+    content: "\f11e";
+}
+.i-edit:before {
+    content: "\f11f";
+}
+.i-facebook:before {
+    content: "\f120";
+}
+.i-filter:before {
+    content: "\f121";
+}
+.i-folder_new:before {
+    content: "\f122";
+}
+.i-folder_open:before {
+    content: "\f123";
+}
+.i-folder:before {
+    content: "\f124";
+}
+.i-globe:before {
+    content: "\f125";
+}
+.i-grid1:before {
+    content: "\f126";
+}
+.i-help:before {
+    content: "\f127";
+}
+.i-home:before {
+    content: "\f128";
+}
+.i-image:before {
+    content: "\f129";
+}
+.i-info:before {
+    content: "\f12a";
+}
+.i-instagram:before {
+    content: "\f12b";
+}
+.i-link:before {
+    content: "\f12c";
+}
+.i-list:before {
+    content: "\f12d";
+}
+.i-lock_open:before {
+    content: "\f12e";
+}
+.i-login:before {
+    content: "\f12f";
+}
+.i-logout:before {
+    content: "\f130";
+}
+.i-mail:before {
+    content: "\f131";
+}
+.i-menu:before {
+    content: "\f132";
+}
+.i-nodes:before {
+    content: "\f133";
+}
+.i-nodes2:before {
+    content: "\f134";
+}
+.i-notification:before {
+    content: "\f135";
+}
+.i-open_in_new:before {
+    content: "\f136";
+}
+.i-page_add:before {
+    content: "\f137";
+}
+.i-page1:before {
+    content: "\f138";
+}
+.i-page2:before {
+    content: "\f139";
+}
+.i-pdf:before {
+    content: "\f13a";
+}
+.i-qr:before {
+    content: "\f13b";
+}
+.i-radio_off:before {
+    content: "\f13c";
+}
+.i-radio_on:before {
+    content: "\f13d";
+}
+.i-redo:before {
+    content: "\f13e";
+}
+.i-refresh:before {
+    content: "\f13f";
+}
+.i-schedule:before {
+    content: "\f140";
+}
+.i-search:before {
+    content: "\f141";
+}
+.i-send:before {
+    content: "\f142";
+}
+.i-settings:before {
+    content: "\f143";
+}
+.i-share:before {
+    content: "\f144";
+}
+.i-shopping_cart:before {
+    content: "\f145";
+}
+.i-star:before {
+    content: "\f146";
+}
+.i-undo:before {
+    content: "\f147";
+}
+.i-upload:before {
+    content: "\f148";
+}
+.i-video:before {
+    content: "\f149";
+}
+.i-visibility_off:before {
+    content: "\f14a";
+}
+.i-visibility_on:before {
+    content: "\f14b";
+}
+.i-warn:before {
+    content: "\f14c";
+}

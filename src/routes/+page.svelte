@@ -44,6 +44,28 @@
 							type: 'page',
 							label: '5 Uranus',
 							id: 'ura'
+						},
+						{
+							type: 'dir',
+							label: 'Some other stuff',
+							id: 'other',
+							children: [
+								{
+									type: 'page',
+									label: 'Item 1',
+									id: 'i-1'
+								},
+								{
+									type: 'page',
+									label: 'Item 2',
+									id: 'i-2'
+								},
+								{
+									type: 'page',
+									label: 'Item 3',
+									id: 'i-3'
+								}
+							]
 						}
 					]
 				},
@@ -66,3 +88,6 @@
 <a href="{base}/link">link</a>
 
 <b-tree bind:this={tree}>aa</b-tree>
+
+<p />
+<div class="icon-arrow_up" />

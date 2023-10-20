@@ -1,0 +1,12 @@
+button {
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+button[variant='link'],
+button[variant='simple'] {
+	border: none;
+	background: transparent;
+}

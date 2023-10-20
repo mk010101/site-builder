@@ -6,10 +6,14 @@ export class BTree extends HTMLElement {
 	template = /*html*/ `
         <style>
 	@import "/styles/reset.css";
+	@import "/styles/components/button.css";
+	@import "/styles/font/a-icons.css";
 
 	:host {
 		--margin-left: 1.5rem;
 	}
+
+	button > * {pointer-events: none;}
 
 	.draggable {
 		display: block;
@@ -27,7 +31,6 @@ export class BTree extends HTMLElement {
 		position: relative;
 		line-height: 1.2;
 		user-select: none;
-		border-left: 1px solid #ccc;
 	}
 
 	details > .leaf, details > details {
@@ -66,6 +69,10 @@ export class BTree extends HTMLElement {
 		content: '';
 	}
 
+	.decorator {
+		color: #0864a6;
+	}
+
 	nav {
 		display: flex;
 		gap: 1rem;
@@ -79,13 +86,14 @@ export class BTree extends HTMLElement {
 
 	<nav>
 		<div>
-			<button variant="simple" data-id="move-up">Up</button>
-			<button variant="simple" data-id="move-down">Down</button>
+			<button variant="link" data-id="move-up"><div class="i-arrow_up"></div></button>
+			<button variant="link" data-id="move-down"><div class="i-arrow_down"></div></button>
 		</div>
 		<div>
-			<button variant="simple" data-id="move-to">Move to:</button> 
+			<button variant="link" data-id="move-to">Move to:</button> 
 			<select></select>
 		</div>
+		<div class="i-delete"></div>
 	</nav>
     <aside></aside>
     `;
@@ -284,8 +292,8 @@ export class BTree extends HTMLElement {
 				const disabled = p.label === 'root' ? 'disabled' : '';
 				str += `<details id="${p.id}" open draggable="true" class="drop-target draggable">
 					<summary>
-						<span class="closed">+</span>
-						<span class="open">-</span>
+						<span class="closed i-folder decorator"></span>
+						<span class="open i-folder_open decorator"></span>
 						<label class="dir"><input ${disabled} class="radio" type='radio' name='tree'><span>${p.label}</span></label>
 				</summary>`;
 				str += `${this._parse(p.children, '')}`;
@@ -296,7 +304,7 @@ export class BTree extends HTMLElement {
 				const index = isIndex ? ' (INDEX)' : '';
 				str += `<label id="${p.id}" ${isIndex} ${draggable} class="leaf draggable">
 						<input type='radio' class="radio page" name='tree'>
-						<span>${p.label}${index}</span>
+						<span class="i-page1 decorator"></span><span>${p.label}${index}</span>
 					</label>`;
 			}
 		});
