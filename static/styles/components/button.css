@@ -5,6 +5,10 @@ button {
 	justify-content: center;
 }
 
+button > * {
+	pointer-events: none;
+}
+
 button[variant='link'],
 button[variant='simple'] {
 	border: none;

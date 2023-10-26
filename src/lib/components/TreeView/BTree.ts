@@ -13,8 +13,6 @@ export class BTree extends HTMLElement {
 		--margin-left: 1.5rem;
 	}
 
-	button > * {pointer-events: none;}
-
 	.draggable {
 		display: block;
 	}
@@ -56,7 +54,7 @@ export class BTree extends HTMLElement {
 		display: block;
 	}
 
-	.radio {
+	.radio { 
 		display: none;
 	}
 
