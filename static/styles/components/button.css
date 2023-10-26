@@ -3,6 +3,8 @@ button {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	gap: 0.25rem;
+	background-color: antiquewhite;
 }
 
 button > * {
@@ -13,4 +15,8 @@ button[variant='link'],
 button[variant='simple'] {
 	border: none;
 	background: transparent;
+}
+
+button[negative] {
+	color: red;
 }

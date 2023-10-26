@@ -59,7 +59,8 @@ export class BTree extends HTMLElement {
 	}
 
 	.radio:checked ~ span {
-		color: red;
+		color: #068a58;
+		font-weight: bold;
 	}
 	summary::marker,
 	summary::-webkit-details-marker {
@@ -68,16 +69,27 @@ export class BTree extends HTMLElement {
 	}
 
 	.decorator {
-		color: #0864a6;
+		color: #858686;
+		font-size: 1.2rem;
+		line-height: 1;
 	}
 
 	nav {
 		display: flex;
 		gap: 1rem;
+		flex-wrap: wrap;
+		border: 1px solid #ccc;
+		background-color: #efefef;
+		padding: .25rem;
+		max-width: 800px;
 	}
 
 	select {
 		max-width: 8rem;
+	}
+
+	button[data-id="close"] {
+		zfont-size: 1.2rem;
 	}
 
     </style>
@@ -91,7 +103,12 @@ export class BTree extends HTMLElement {
 			<button variant="link" data-id="move-to">Move to:</button> 
 			<select></select>
 		</div>
-		<div class="i-delete"></div>
+		
+			<button variant="link" data-id="new-page"><div class="i-page_add"></div>New page</button> 
+			<button variant="link" data-id="new-dir"><div class="i-create_new_folder"></div>New folder</button> 
+			<button variant="link" negative data-id="delete"><div class="i-delete"></div>Delete</button> 
+			<button variant="link" data-id="save"><div class="i-hard_drive"></div>Save</button> 
+			<button variant="link" data-id="close">Close<div class="i-close"></div></button> 
 	</nav>
     <aside></aside>
     `;
