@@ -76,6 +76,7 @@ export class BTree extends HTMLElement {
 
 	nav {
 		display: flex;
+		align-items: center;
 		gap: 1rem;
 		flex-wrap: wrap;
 		border: 1px solid #ccc;
@@ -96,19 +97,19 @@ export class BTree extends HTMLElement {
 
 	<nav>
 		<div>
-			<button variant="link" data-id="move-up"><div class="i-arrow_up"></div></button>
-			<button variant="link" data-id="move-down"><div class="i-arrow_down"></div></button>
+			<button size="s" data-id="move-up"><div class="i-arrow_up"></div></button>
+			<button size="s" data-id="move-down"><div class="i-arrow_down"></div></button>
 		</div>
 		<div>
 			<button variant="link" data-id="move-to">Move to:</button> 
 			<select></select>
 		</div>
 		
-			<button variant="link" data-id="new-page"><div class="i-page_add"></div>New page</button> 
-			<button variant="link" data-id="new-dir"><div class="i-create_new_folder"></div>New folder</button> 
-			<button variant="link" negative data-id="delete"><div class="i-delete"></div>Delete</button> 
-			<button variant="link" data-id="save"><div class="i-hard_drive"></div>Save</button> 
-			<button variant="link" data-id="close">Close<div class="i-close"></div></button> 
+			<button size="s" data-id="new-page"><div class="i-page_add"></div>New page</button> 
+			<button size="s" data-id="new-dir"><div class="i-create_new_folder"></div>New folder</button> 
+			<button size="s" negative data-id="delete"><div class="i-delete"></div>Delete</button> 
+			<button size="s" data-id="save"><div class="i-hard_drive"></div>Save</button> 
+			<button size="s" data-id="close">Close<div class="i-close"></div></button> 
 	</nav>
     <aside></aside>
     `;
