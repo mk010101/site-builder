@@ -1,8 +1,8 @@
-import { throttle } from '$lib/util';
+import { BaseEl } from './BaseEl';
 
 export type TreeData = any[];
 
-export class BTree extends HTMLElement {
+export class BTree extends BaseEl {
 	template = /*html*/ `
         <style>
 	@import "/styles/reset.css";
@@ -130,11 +130,11 @@ export class BTree extends HTMLElement {
 
 	constructor() {
 		super();
-		const shadow = this.attachShadow({ mode: 'open' });
-		shadow.innerHTML = this.template;
 
-		this._treeHolder = shadow.querySelector('aside') as HTMLElement;
-		this._nav = shadow.querySelector('nav') as HTMLElement;
+		this._init();
+
+		this._treeHolder = this.shadowRoot!.querySelector('aside') as HTMLElement;
+		this._nav = this.shadowRoot!.querySelector('nav') as HTMLElement;
 		this._elSelect = this._nav.querySelector('select') as HTMLSelectElement;
 
 		this._drop = this._drop.bind(this);
