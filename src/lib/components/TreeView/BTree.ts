@@ -1,3 +1,5 @@
+import { defineEl } from '$lib/util';
+import { BModal } from '../BModal';
 import { BaseEl } from './BaseEl';
 
 export type TreeData = any[];
@@ -119,12 +121,15 @@ export class BTree extends BaseEl {
 		<button size="xs" positive data-id="save"><div class="i-hard_drive"></div>Save</button> 
 	</nav>
     <aside></aside>
+	<zb-modal>11</zb-modal>
     `;
 
 	_treeHolder: HTMLElement;
 	_selectedEl: HTMLElement | null = null;
 	_nav: HTMLElement;
 	_elSelect: HTMLSelectElement;
+
+	_modal: BModal;
 
 	constructor() {
 		super();
@@ -134,6 +139,8 @@ export class BTree extends BaseEl {
 		this._treeHolder = this.shadowRoot!.querySelector('aside') as HTMLElement;
 		this._nav = this.shadowRoot!.querySelector('nav') as HTMLElement;
 		this._elSelect = this._nav.querySelector('select') as HTMLSelectElement;
+		this._modal = this.shadowRoot!.querySelector('b-modal') as BModal;
+		console.log(this._modal);
 
 		this._drop = this._drop.bind(this);
 		this._itemSelect = this._itemSelect.bind(this);
@@ -336,6 +343,4 @@ export class BTree extends BaseEl {
 	}
 }
 
-if (!customElements.get('b-tree')) {
-	customElements.define('b-tree', BTree);
-}
+defineEl('b-tree', BTree);
