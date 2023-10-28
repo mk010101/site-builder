@@ -59,7 +59,7 @@ export class BTree extends HTMLElement {
 	}
 
 	.radio:checked ~ span {
-		color: #068a58;
+		color: #0854eb;
 		font-weight: bold;
 	}
 	summary::marker,
@@ -77,12 +77,12 @@ export class BTree extends HTMLElement {
 	nav {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
+		gap: .5rem;
 		flex-wrap: wrap;
 		border: 1px solid #ccc;
 		background-color: #efefef;
 		padding: .25rem;
-		max-width: 800px;
+		max-width: 620px;
 	}
 
 	select {
@@ -93,8 +93,14 @@ export class BTree extends HTMLElement {
 		zfont-size: 1.2rem;
 	}
 
+	.divider {
+		width: 100%;
+		flex-shrink: 0;
+	}
+
     </style>
 
+	<h3>Structure</h3>
 	<nav>
 		<div>
 			<button size="s" data-id="move-up"><div class="i-arrow_up"></div></button>
@@ -107,9 +113,12 @@ export class BTree extends HTMLElement {
 		
 			<button size="s" data-id="new-page"><div class="i-page_add"></div>New page</button> 
 			<button size="s" data-id="new-dir"><div class="i-create_new_folder"></div>New folder</button> 
-			<button size="s" negative data-id="delete"><div class="i-delete"></div>Delete</button> 
-			<button size="s" data-id="save"><div class="i-hard_drive"></div>Save</button> 
 			<button size="s" data-id="close">Close<div class="i-close"></div></button> 
+			<div class="divider"></div>
+			<button size="s" negative data-id="delete"><div class="i-delete"></div></button> 
+			<button size="s" data-id="undo"><div class="i-undo"></div></button> 
+			<button size="s" data-id="redo"><div class="i-redo"></div></button> 
+			<button size="s" data-id="save"><div class="i-hard_drive"></div>Save</button> 
 	</nav>
     <aside></aside>
     `;
@@ -320,7 +329,8 @@ export class BTree extends HTMLElement {
 				const index = isIndex ? ' (INDEX)' : '';
 				str += `<label id="${p.id}" ${isIndex} ${draggable} class="leaf draggable">
 						<input type='radio' class="radio page" name='tree'>
-						<span class="i-page1 decorator"></span><span>${p.label}${index}</span>
+						<span class="i-page1 decorator"></span>
+						<span data-id="name">${p.label}${index}</span>
 					</label>`;
 			}
 		});
