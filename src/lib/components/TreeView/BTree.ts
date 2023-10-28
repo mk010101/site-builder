@@ -5,10 +5,6 @@ export type TreeData = any[];
 export class BTree extends BaseEl {
 	template = /*html*/ `
         <style>
-	@import "/styles/reset.css";
-	@import "/styles/components/button.css";
-	@import "/styles/font/a-icons.css";
-
 	:host {
 		--margin-left: 1.5rem;
 	}
@@ -59,7 +55,7 @@ export class BTree extends BaseEl {
 	}
 
 	.radio:checked ~ span {
-		color: #0854eb;
+		color: var(--color-positive);
 		font-weight: bold;
 	}
 	summary::marker,
@@ -77,20 +73,24 @@ export class BTree extends BaseEl {
 	nav {
 		display: flex;
 		align-items: center;
-		gap: .5rem;
+		gap: .25rem;
 		flex-wrap: wrap;
 		border: 1px solid #ccc;
 		background-color: #efefef;
-		padding: .25rem;
-		max-width: 620px;
+		padding: .5rem;
+		max-width: 500px;
 	}
 
 	select {
 		max-width: 8rem;
 	}
 
+	button {
+		zmargin: 0 2px;
+	}
+
 	button[data-id="close"] {
-		zfont-size: 1.2rem;
+		margin-left: auto;
 	}
 
 	.divider {
@@ -102,23 +102,21 @@ export class BTree extends BaseEl {
 
 	<h3>Structure</h3>
 	<nav>
-		<div>
-			<button size="s" data-id="move-up"><div class="i-arrow_up"></div></button>
-			<button size="s" data-id="move-down"><div class="i-arrow_down"></div></button>
-		</div>
-		<div>
-			<button variant="link" data-id="move-to">Move to:</button> 
-			<select></select>
-		</div>
 		
-			<button size="s" data-id="new-page"><div class="i-page_add"></div>New page</button> 
-			<button size="s" data-id="new-dir"><div class="i-create_new_folder"></div>New folder</button> 
-			<button size="s" data-id="close">Close<div class="i-close"></div></button> 
-			<div class="divider"></div>
-			<button size="s" negative data-id="delete"><div class="i-delete"></div></button> 
-			<button size="s" data-id="undo"><div class="i-undo"></div></button> 
-			<button size="s" data-id="redo"><div class="i-redo"></div></button> 
-			<button size="s" data-id="save"><div class="i-hard_drive"></div>Save</button> 
+		<button size="xs" iconOnly data-id="move-up"><div class="i-arrow_up"></div></button>
+		<button size="xs" iconOnly data-id="move-down"><div class="i-arrow_down"></div></button>				
+		<button size="xs" data-id="move-to">Move to<div class="i-arrow_ff"></button> 
+		<select></select>				
+		<button size="xs" iconOnly data-id="close"><div class="i-close"></div></button> 
+
+		<div class="divider"></div>
+		<button size="xs" iconOnly data-id="undo"><div class="i-undo"></div></button> 
+		<button size="xs" iconOnly data-id="redo"><div class="i-redo"></div></button> 
+		<button size="xs" data-id="new-page"><div class="i-page_add"></div>New page</button> 
+		<button size="xs" data-id="new-dir"><div class="i-create_new_folder"></div>New folder</button> 
+		<button size="xs" iconOnly negative data-id="delete"><div class="i-delete"></div></button> 
+		<button size="xs" iconOnly data-id="edit"><div class="i-edit"></div></button> 
+		<button size="xs" positive data-id="save"><div class="i-hard_drive"></div>Save</button> 
 	</nav>
     <aside></aside>
     `;
