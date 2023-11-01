@@ -70,8 +70,8 @@ button[positive] {
 :host {
 	--color-light: #fff;
 	--color-dark: #1c1c1c;
-	--color-primary: #005f72;
-	--color-primary-2: #019bba;
+	--color-primary: #019bba;
+	--color-primary-2: #005f72;
 	--color-negative: red;
 	--color-positive: green;
 }

@@ -23,11 +23,20 @@
 	against such interference or attacks. Gas giants. Just this. In the light of the Sun.
 </p>
 <p>
-	<button class="btn" variant="primary">Find out more</button>
+	<button class="btn" variant="primary"><span class="i-shopping_cart" />Find out more</button>
 	<button class="btn"><span>Something else £45.92</span><span class="dot" /></button>
+</p>
+<p>
+	<input type="range" bind:value={weight} min="400" max="700" />
+	<span>{weight}</span>
 </p>
 
 <style>
+	h2,
+	h3 {
+		color: rgb(93, 93, 93);
+		color: var(--color-primary-2);
+	}
 	h2 {
 		font-family: var(--font-family-header);
 		font-size: 2.5rem;
@@ -35,8 +44,7 @@
 		font-weight: 600;
 		/* font-style: italic; */
 		line-height: 1;
-		margin-bottom: 1rem;
-		color: #2e2e2e;
+		margin-bottom: 0.25rem;
 	}
 	h3 {
 		font-size: 2rem;
@@ -58,7 +66,8 @@
 		font-weight: 600;
 		font-size: 1.25rem;
 		margin-right: 1rem;
-		line-height: 1rem;
+		zline-height: 1rem;
+		letter-spacing: 0.05rem;
 	}
 
 	.dot {
