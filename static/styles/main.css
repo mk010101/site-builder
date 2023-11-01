@@ -2,4 +2,6 @@
 body {
 	padding: 1rem;
 	font-family: var(--font-family);
+	font-family: t4;
+	font-weight: 350;
 }

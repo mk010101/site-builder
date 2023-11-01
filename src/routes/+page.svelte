@@ -89,5 +89,23 @@
 
 <b-tree bind:this={tree}>aa</b-tree>
 
-<p />
-<div class="icon-arrow_up" />
+<h2>Whereas recognition of the inherent dignity 1234567890.,;</h2>
+<p>
+	No one shall be subjected to arbitrary arrest, detention or exile. Everyone is entitled in full
+	equality to a fair and public hearing by an independent and impartial tribunal, in the
+	determination of his rights and obligations and of any criminal charge against him. No one shall
+	be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to
+	attacks upon his honour and reputation. Everyone has the right to the protection of the law
+	against such interference or attacks. Gas giants. Just this. In the light of the Sun.
+</p>
+
+<style>
+	h2 {
+		font-family: h3;
+		font-size: 2.5rem;
+		font-weight: 600;
+		line-height: 0.9;
+		text-transform: uppercase;
+		margin-bottom: 0.5rem;
+	}
+</style>

@@ -7,10 +7,11 @@ button {
 	gap: 0.25rem;
 	border: 2px solid var(--color-primary);
 	border-radius: 4px;
-	padding: 0.5rem;
+	padding: 1.5rem 2rem;
 	line-height: 1.25;
 	transition: color 0.3s, border-color 0.3s, background-color 0.3s;
 	font-weight: 600;
+	background: transparent;
 }
 
 button:hover {
@@ -77,21 +78,22 @@ button[positive] {
 /* MOVE TO FONT */
 
 @font-face {
+	font-family: h1;
+	src: url('/styles/font/typeface/HEADING/Literata/Literata-VariableFont_opsz,wght.ttf');
+}
+@font-face {
+	font-family: h2;
+	src: url('/styles/font/typeface/HEADING/Lora/Lora-VariableFont_wght.ttf');
+}
+
+/* body */
+
+@font-face {
 	font-family: t1;
-	src: url('/styles/font/typeface/OpenSans-VariableFont_wdth,wght.ttf');
-}
-
-@font-face {
-	font-family: t2;
-	src: url('/styles/font/typeface/Roboto-Regular.ttf');
-}
-
-@font-face {
-	font-family: t3;
-	src: url('/styles/font/typeface/Montserrat-VariableFont_wght.ttf');
+	src: url('/styles/font/typeface/Mulish/Mulish-VariableFont_wght.ttf');
 }
 
 :root,
 :host {
-	--font-family: t1;
+	--font-family: t4;
 }

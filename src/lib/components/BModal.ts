@@ -29,6 +29,10 @@ export class BModal extends BaseEl {
 		this._init();
 		console.log(534);
 	}
+
+	show() {
+		//
+	}
 }
 
 defineEl('b-modal', BModal);

@@ -1,4 +1,5 @@
 import { defineEl } from '$lib/util';
+// @ts-ignore
 import { BModal } from '../BModal';
 import { BaseEl } from './BaseEl';
 
@@ -121,7 +122,7 @@ export class BTree extends BaseEl {
 		<button size="xs" positive data-id="save"><div class="i-hard_drive"></div>Save</button> 
 	</nav>
     <aside></aside>
-	<zb-modal>11</zb-modal>
+	<zb-modal></zb-modal>
     `;
 
 	_treeHolder: HTMLElement;
