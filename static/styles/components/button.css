@@ -10,6 +10,7 @@ button {
 	padding: 1.5rem 2rem;
 	line-height: 1.25;
 	transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+	font-family: var(--font-family-body);
 	font-weight: 600;
 	background: transparent;
 }
@@ -78,22 +79,19 @@ button[positive] {
 /* MOVE TO FONT */
 
 @font-face {
-	font-family: h1;
-	src: url('/styles/font/typeface/HEADING/Literata/Literata-VariableFont_opsz,wght.ttf');
-}
-@font-face {
-	font-family: h2;
+	font-family: FHeader;
 	src: url('/styles/font/typeface/HEADING/Lora/Lora-VariableFont_wght.ttf');
 }
 
 /* body */
 
 @font-face {
-	font-family: t1;
+	font-family: FBody;
 	src: url('/styles/font/typeface/Mulish/Mulish-VariableFont_wght.ttf');
 }
 
 :root,
 :host {
-	--font-family: t4;
+	--font-family-header: FHeader;
+	--font-family-body: FBody;
 }
