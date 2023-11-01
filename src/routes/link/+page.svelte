@@ -27,7 +27,9 @@
 </p>
 <p>
 	<button class="btn" variant="primary" style="font-family: {heading};">Find out more</button>
-	<button class="btn" style="font-family: {heading};">Something else</button>
+	<button class="btn" style="font-family: {heading};"
+		><span>Something else</span><span class="dot" /></button
+	>
 </p>
 <p>
 	<select bind:value={heading}>
@@ -46,7 +48,7 @@
 	h2 {
 		font-family: var(--header);
 		font-size: 2.5rem;
-		font-optical-sizing: none;
+		font-optical-sizing: auto;
 		font-weight: 600;
 		/* font-style: italic; */
 		line-height: 1;
@@ -64,10 +66,16 @@
 	}
 
 	button.btn {
-		font-family: t1;
-		text-transform: uppercase;
-		/*  font-size: 1.25rem; */
-		font-weight: 600;
+		ztext-transform: uppercase;
+		zfont-weight: 600;
+		font-size: 1.25rem;
 		margin-right: 1rem;
+		line-height: 1rem;
+	}
+
+	.dot {
+		width: 1rem;
+		height: 0.1rem;
+		background-color: #666;
 	}
 </style>
