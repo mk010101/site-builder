@@ -7,22 +7,40 @@ button {
 	gap: 0.25rem;
 	border: 1px solid var(--color-primary);
 	border-radius: 4px;
-	padding: 0.5rem;
+	padding: 1.5rem 2rem;
 	line-height: 1.25;
-	transition: color 0.5s, border-color 0.5s;
+	transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+	font-family: var(--font-family-body);
+	font-weight: 600;
+	background: transparent;
 }
 
 button:hover {
-	border-color: #019bba;
-	color: #019bba;
+	color: var(--color-primary-2);
+	border-color: var(--color-primary-2);
 }
 
 button[size='s'] {
-	padding: 0.11rem 0.25rem;
+	padding: 0rem 0.25rem;
+}
+
+button[size='xs'] {
+	line-height: 1rem;
+	padding: 0.25rem 0.25rem;
+	font-size: 0.85rem;
 }
 
 button > * {
 	pointer-events: none;
+}
+
+button[variant='primary'] {
+	background-color: var(--color-primary);
+	color: var(--color-light);
+}
+button[variant='primary']:hover {
+	background-color: var(--color-primary-2);
+	color: var(--color-light);
 }
 
 button[variant='link'],
@@ -31,8 +49,19 @@ button[variant='simple'] {
 	background: transparent;
 }
 
+button[icononly][size='xs'] {
+	width: 1.75rem;
+	height: 1.75rem;
+}
+
 button[negative] {
-	color: red;
+	color: var(--color-negative);
+	border-color: var(--color-negative);
+}
+
+button[positive] {
+	color: var(--color-positive);
+	border-color: var(--color-positive);
 }
 
 /* MOVE TO THEME */
@@ -41,5 +70,28 @@ button[negative] {
 :host {
 	--color-light: #fff;
 	--color-dark: #1c1c1c;
-	--color-primary: #005f72;
+	--color-primary: #019bba;
+	--color-primary-2: #005f72;
+	--color-negative: red;
+	--color-positive: green;
+}
+
+/* MOVE TO FONT */
+
+@font-face {
+	font-family: FHeader;
+	src: url('/styles/font/typeface/HEADING/Lora/Lora-VariableFont_wght.ttf');
+}
+
+/* body */
+
+@font-face {
+	font-family: FBody;
+	src: url('/styles/font/typeface/Mulish/Mulish-VariableFont_wght.ttf');
+}
+
+:root,
+:host {
+	--font-family-header: FHeader;
+	--font-family-body: FBody;
 }

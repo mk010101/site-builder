@@ -1,3 +1,6 @@
+@import url('./components/button.css');
 body {
 	padding: 1rem;
+	font-family: var(--font-family-body);
+	font-weight: 350;
 }

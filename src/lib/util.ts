@@ -13,3 +13,9 @@ export function throttle(callback: any, delay: number) {
 		}, delay);
 	};
 }
+
+export function defineEl(name: string, className: CustomElementConstructor) {
+	if (!customElements.get(name)) {
+		customElements.define(name, className);
+	}
+}
