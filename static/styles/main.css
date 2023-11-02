@@ -1,6 +1,14 @@
 @import url('./components/button.css');
+
 body {
-	padding: 1rem;
+	zwidth: 100%;
+	min-height: 100vh;
+	margin: 1rem 2rem;
 	font-family: var(--font-family-body);
-	font-weight: 350;
+	font-weight: 370;
+	line-height: 1.75rem;
+	color: var(--color-dark);
+	background-color: var(--color-light);
+	/* background-image: linear-gradient(rgba(6, 39, 225, 0.5) 1px, transparent 1px); */
+	background-size: 1em 1.75rem;
 }

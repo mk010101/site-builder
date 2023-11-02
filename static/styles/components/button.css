@@ -1,4 +1,5 @@
 button {
+	background: transparent;
 	color: var(--color-primary);
 	cursor: pointer;
 	display: inline-flex;
@@ -7,12 +8,13 @@ button {
 	gap: 0.25rem;
 	border: 1px solid var(--color-primary);
 	border-radius: 4px;
-	padding: 1.5rem 2rem;
+	padding: 1.05rem 1.5rem;
 	line-height: 1.25;
 	transition: color 0.3s, border-color 0.3s, background-color 0.3s;
 	font-family: var(--font-family-body);
-	font-weight: 600;
-	background: transparent;
+	font-weight: 700;
+	letter-spacing: 0.1ch;
+	text-transform: uppercase;
 }
 
 button:hover {
@@ -79,7 +81,7 @@ button[positive] {
 /* MOVE TO FONT */
 
 @font-face {
-	font-family: FHeaderOLD;
+	font-family: FHeader2;
 	src: url('/styles/font/typeface/Lora-var.woff2');
 }
 @font-face {
@@ -96,6 +98,46 @@ button[positive] {
 
 :root,
 :host {
-	--font-family-header: FHeader;
+	--font-family-header: FHeader2;
 	--font-family-body: FBody;
+	--font-size-h1: 3rem;
+	--font-size-h2: 2rem;
+	--font-size-h3: 1.5rem;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-family-header), Georgia, 'Times New Roman', Times, serif;
+	font-optical-sizing: auto;
+	text-wrap: balance;
+	color: rgb(95, 87, 47);
+	/* background-color: rgba(1, 155, 186, 0.378); */
+}
+
+h1 {
+	font-size: var(--font-size-h1); /* 2.625rem */
+	text-transform: uppercase;
+	font-weight: 700;
+	line-height: 0.9;
+	margin-bottom: 1rem;
+}
+
+h2 {
+	font-size: var(--font-size-h2);
+	zfont-style: italic;
+	font-weight: 500;
+	line-height: 1.325;
+	margin-bottom: 0.6rem;
+}
+h3 {
+	font-size: var(--font-size-h3);
+	zfont-style: italic;
+	font-weight: 500;
+	line-height: 1.325;
+	margin-bottom: 0.75rem;
+}
+
+p {
+	margin-bottom: 2.5rem;
 }
