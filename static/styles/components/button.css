@@ -79,15 +79,19 @@ button[positive] {
 /* MOVE TO FONT */
 
 @font-face {
+	font-family: FHeaderOLD;
+	src: url('/styles/font/typeface/Lora-var.woff2');
+}
+@font-face {
 	font-family: FHeader;
-	src: url('/styles/font/typeface/HEADING/Lora/Lora-VariableFont_wght.ttf');
+	src: url('/styles/font/typeface/Literata-var.woff2');
 }
 
 /* body */
 
 @font-face {
 	font-family: FBody;
-	src: url('/styles/font/typeface/Mulish/Mulish-VariableFont_wght.ttf');
+	src: url('/styles/font/typeface/Mulish-var.woff2');
 }
 
 :root,

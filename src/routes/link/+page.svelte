@@ -27,7 +27,7 @@
 	<button class="btn"><span>Something else £45.92</span><span class="dot" /></button>
 </p>
 <p>
-	<input type="range" bind:value={weight} min="400" max="700" />
+	<input type="range" bind:value={weight} min="100" max="900" />
 	<span>{weight}</span>
 </p>
 
@@ -36,9 +36,10 @@
 	h3 {
 		color: rgb(93, 93, 93);
 		color: var(--color-primary-2);
+		font-family: FHeader, Georgia, 'Times New Roman', Times, serif;
 	}
 	h2 {
-		font-family: var(--font-family-header);
+		zfont-family: var(--font-family-header);
 		font-size: 2.5rem;
 		font-optical-sizing: auto;
 		font-weight: 600;
