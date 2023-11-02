@@ -50,6 +50,7 @@
 		font-size: 2rem;
 		font-style: italic;
 		line-height: 1.15;
+		letter-spacing: -0.01ch;
 	}
 
 	h2.up {
